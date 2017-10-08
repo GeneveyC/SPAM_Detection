@@ -11,6 +11,10 @@ def count_caractere(sms):
 	sum = sms.count("!")+sms.count("#")+sms.count("$")+sms.count("%")+sms.count("&")+sms.count("(")+sms.count(")")+sms.count("*")+sms.count("+")+sms.count(",")+sms.count("-")+sms.count("-")+sms.count("/")+sms.count(":")+sms.count(";")+sms.count("=")+sms.count("<")+sms.count(">")+sms.count("?")+sms.count("@")+sms.count("[")+sms.count("]")+sms.count("^")+sms.count("_")+sms.count("|")+sms.count("{")+sms.count("}")+sms.count("~")
 	return sum
 
+# Function to extract feature for training
+def extract_feature(sms):
+	return len(sms),count_number(sms),count_caractere(sms)
+
 if __name__ == '__main__':
 	# Create DataFrame with spam.csv
 	df = pd.read_csv('./data/spam.csv', encoding='latin-1')
