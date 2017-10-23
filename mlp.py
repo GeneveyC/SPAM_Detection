@@ -2,6 +2,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.neural_network import MLPClassifier
 from sklearn import metrics
+
 import pandas as pd
 
 # url of dataset
@@ -31,3 +32,9 @@ y_pred_class = clf.predict(X_test_dtm)
 # calculate accuracy of class predictions
 print metrics.accuracy_score(y_test, y_pred_class)
 
+
+# calculate predicted probabilities for X_test_dtm
+y_pred_prob = clf.predict_proba(X_test_dtm)[:,1]
+
+# calculate AUC
+print metrics.roc_auc_score(y_test, y_pred_prob)
