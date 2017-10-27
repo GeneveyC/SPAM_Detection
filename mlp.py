@@ -29,7 +29,7 @@ X_train_dtm = vect.transform(X_train)
 X_test_dtm = vect.transform(X_test)
 
 # Create an neural network with activation relu
-clf = MLPClassifier(solver='lbfgs', random_state=1)
+clf = MLPClassifier(solver='lbfgs', random_state=1, max_iter=100)
 
 #clf.fit(X_train_dtm, y_train)
 #y_pred_class = clf.predict(X_test_dtm)
@@ -45,12 +45,14 @@ clf = MLPClassifier(solver='lbfgs', random_state=1)
 #print metrics.roc_auc_score(y_test, y_pred_prob)
 
 # learning curve
+ylim = (0.7, 1.01)
 cv = ShuffleSplit(n_splits=100, test_size=0.4, random_state=1)
 print("Learning curve")
 train_sizes, train_scores, test_scores = learning_curve(clf, X_train_dtm.toarray(), y_train.as_matrix(), cv=None)
 
 plt.figure()
 plt.title("Learning Curves (MLP)")
+plt.ylim(ylim)
 plt.xlabel("Training examples")
 plt.ylabel("Score")
 
@@ -66,3 +68,6 @@ plt.plot(train_sizes, train_scores_mean, 'o-', color="r", label="Training score"
 plt.plot(train_sizes, test_scores_mean, 'o-', color="g", label="Cross-validation score")
 plt.legend(loc="best")
 plt.show()
+
+# save X_test into file
+np.savetxt('file',X_test)
