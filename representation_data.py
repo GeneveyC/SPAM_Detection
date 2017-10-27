@@ -46,7 +46,7 @@ def init_data():
     '''
     Fct which read the file 'spam.csv' and create a dataframe with label in {0,1} and text message
     '''
-    sms = pd.read_csv('spam.csv',encoding='latin-1') 
+    sms = pd.read_csv('./data/spam.csv',encoding='latin-1') 
     sms = sms.drop(['Unnamed: 2','Unnamed: 3','Unnamed: 4'],axis=1)
     sms = sms.rename(columns = {'v1':'label','v2':'message'})
     sms=sms.replace(['ham','spam'],[0,1])
