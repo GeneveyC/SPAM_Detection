@@ -28,3 +28,4 @@ print metrics.roc_auc_score(y_test, y_pred_prob)
 # learning_curve
 cv = ShuffleSplit(n_splits=100, test_size=0.4, random_state=1)
 print "Learning curve"
+train_size, train_scores, test_scores = learning_curve(mlp, X_train, y
