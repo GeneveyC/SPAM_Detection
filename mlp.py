@@ -49,6 +49,7 @@ ylim = (0.7, 1.01)
 cv = ShuffleSplit(n_splits=100, test_size=0.4, random_state=1)
 print("Learning curve")
 train_sizes, train_scores, test_scores = learning_curve(clf, X_train_dtm.toarray(), y_train.as_matrix(), cv=None)
+print type(X_train_dtm.toarray())
 
 plt.figure()
 plt.title("Learning Curves (MLP)")
